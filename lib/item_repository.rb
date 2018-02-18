@@ -17,4 +17,10 @@ class ItemRepository
     @items << Item.new(data)
     end
   end
+
+  def find_item_by_id(id)
+    @items.find do |item|
+      item.id == id
+    end
+  end
 end
