@@ -3,9 +3,38 @@
     "coverage": {
       "/Users/alexcutschall/turing/1module/projects/black_thursday/lib/merchant_repository.rb": [
         1,
+        1,
+        null,
+        1,
+        null,
+        1,
+        2,
+        2,
+        null,
+        null,
+        1,
+        4,
+        null,
+        null,
+        1,
+        2,
+        479,
+        null,
+        null,
+        null
+      ],
+      "/Users/alexcutschall/turing/1module/projects/black_thursday/lib/merchant.rb": [
+        1,
+        1,
+        null,
+        null,
+        1,
+        479,
+        479,
+        null,
         null
       ]
     },
-    "timestamp": 1518983519
+    "timestamp": 1518985959
   }
 }

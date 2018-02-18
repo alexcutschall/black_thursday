@@ -1,5 +1,6 @@
-require './test/test_helper'
-require './lib/merchant_repository'
+require_relative 'test_helper'
+require_relative '../lib/merchant_repository'
+require_relative '../lib/merchant'
 
 class MerchantRepositoryTest < Minitest::Test
   def test_it_can_be_instantiated
@@ -12,5 +13,11 @@ class MerchantRepositoryTest < Minitest::Test
     merchant_repository = MerchantRepository.new('./test/fixtures/merchants.csv')
 
     assert_equal 4, merchant_repository.all.count
+    assert_instance_of Array, merchant_repository.all
+    assert merchant_repository.all.all? {|merchant| merchant.is_a?(Merchant)}
+    assert_equal "Shopin1901", merchant_repository.all.first.name
+  end
+
+  def test_repository_can_find_merchant_by_id
   end
 end
