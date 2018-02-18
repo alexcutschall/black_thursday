@@ -4,7 +4,7 @@ require_relative '../lib/merchant'
 
 class MerchantRepositoryTest < Minitest::Test
   def test_it_can_be_instantiated
-    merchant_repository = MerchantRepository.new('./data/merchants.csv')
+    merchant_repository = MerchantRepository.new('./test/fixtures/merchants.csv')
 
     assert_instance_of MerchantRepository, merchant_repository
   end
@@ -19,5 +19,20 @@ class MerchantRepositoryTest < Minitest::Test
   end
 
   def test_repository_can_find_merchant_by_id
+    merchant_repository = MerchantRepository.new('./test/fixtures/merchants.csv')
+
+    result = merchant_repository.find_by_id(1)
+
+    assert_instance_of Merchant, result
+    assert_equal "Shopin1901", result.name
+    assert_equal 1, result.id
+  end
+
+  def test_returns_nil_when_no_match_found
+    merchant_repository = MerchantRepository.new('./test/fixtures/merchants.csv')
+
+    result = merchant_repository.find_by_id(5234123)
+
+    assert_nil result
   end
 end
