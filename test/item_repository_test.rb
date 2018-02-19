@@ -36,11 +36,11 @@ class ItemRepositoryTest < Minitest::Test
   def test_can_find_all_by_price_in_range
       item_repository = ItemRepository.new('./test/fixtures/items.csv')
 
-      result = item_repository.find_all_by_price_in_range("0","100")
-
+      result = item_repository.find_all_by_price_in_range(0,100)
+binding.pry
       assert_equal [], result
 
-      result = item_repository.find_all_by_price_in_range("0","1500")
+      result = item_repository.find_all_by_price_in_range(0, 1500)
       assert_instance_of Item, result.first
   end
 end
