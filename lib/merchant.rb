@@ -1,7 +1,8 @@
 class Merchant
   attr_reader :id,
               :name,
-              :parent
+              :parent,
+              :current_location
 
    def initialize(data, parent = nil)
     @id   = data[:id].to_i

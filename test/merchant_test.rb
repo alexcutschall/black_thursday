@@ -1,5 +1,6 @@
 require_relative 'test_helper'
 require_relative '../lib/merchant'
+require_relative '../lib/merchant_repository'
 
 class MerchantTest < Minitest::Test
 
@@ -20,5 +21,21 @@ class MerchantTest < Minitest::Test
 
     assert_equal 6, merchant.id
     assert_equal "Codecademy", merchant.name
+  end
+
+  def test_class_can_find_current_location
+    merchant = Merchant.new({:id => 6, :name => "Codecademy"})
+
+    merchant.find_current_location
+
+    assert_instance_of Merchant, merchant.current_location
+  end
+
+  def test_class_can_move_locations
+    merchant = Merchant.new({:id => 6, :name => "Codecademy"})
+
+    merchant.find_current_location
+    assert_instance_of Merchant, merchant.current_location
+
   end
 end
