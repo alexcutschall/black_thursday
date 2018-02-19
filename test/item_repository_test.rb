@@ -36,6 +36,7 @@ class ItemRepositoryTest < Minitest::Test
   def test_item_repository_can_find_all_by_merchant_id
     item_repository = ItemRepository.new('./test/fixtures/items.csv')
 
+  
     result = item_repository.find_all_by_merchant_id(12334185)
     assert_instance_of Array, result
     assert_instance_of Item, result.first

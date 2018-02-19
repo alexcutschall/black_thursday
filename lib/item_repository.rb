@@ -40,9 +40,10 @@ class ItemRepository
   end
 
   def find_all_by_merchant_id(id)
-    @items.find_all do |item|
+    merchants = @items.find_all do |item|
       item.merchant_id == id
     end
+    merchants
   end
 
   def find_all_by_price_in_range(range_low, range_high)

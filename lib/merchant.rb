@@ -13,7 +13,7 @@ class Merchant
   def items
     find_current_location
     if @current_location.parent == nil
-      @current_location.items
+      @current_location.items.find_all_by_merchant_id(@id)
     else
       move(@current_location)
     end
