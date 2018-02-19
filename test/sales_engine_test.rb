@@ -18,7 +18,7 @@ class SalesEngineTest < Minitest::Test
 
   def test_sales_engine_has_instances_of_repositories
     assert_instance_of ItemRepository, @se.items
-    assert_instance_of MerchantRepository, @se.merchants
+    assert_instance_of MerchantRepository, @se.merchant
   end
 
   def test_merchant_attribute_can_find_by_name
