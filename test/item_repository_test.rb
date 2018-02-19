@@ -28,21 +28,23 @@ class ItemRepositoryTest < Minitest::Test
   def test_item_find_by_name
     item_repository = ItemRepository.new('./test/fixtures/items.csv')
 
-    result = item_repository.find_by_name("cache cache à la plage")
-
-    assert_instance_of Item, result
-    assert_equal "Cache cache à la plage", result.name
-  end
-
-  def test_item_find_all_with_description
+  def test_item_repository_can_find_all_by_merchant_id
     item_repository = ItemRepository.new('./test/fixtures/items.csv')
 
-    results = item_repository.find_all_with_description("disney")
+    result = item_repository.find_all_by_merchant_id(12334185)
+    assert_instance_of Array, result
+    assert_instance_of Item, result.first
+  end
 
-    assert_instance_of Array, results
-    assert results.all? do |result|
-      result.description.include?("Disney")
-    end
+  def test_can_find_all_by_price_in_range
+      item_repository = ItemRepository.new('./test/fixtures/items.csv')
+
+      result = item_repository.find_all_by_price_in_range(0,100)
+binding.pry
+      assert_equal [], result
+
+      result = item_repository.find_all_by_price_in_range(0, 1500)
+      assert_instance_of Item, result.first
   end
 
   def test_item_find_all_by_price
