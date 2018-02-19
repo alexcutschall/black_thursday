@@ -24,7 +24,7 @@ class ItemRepositoryTest < Minitest::Test
     assert_equal "Free standing Woden letters", result.name
     assert_equal 263396013, result.id
   end
-
+  
   def test_item_find_by_name
     skip
     item_repository = ItemRepository.new('./test/fixtures/items.csv')
