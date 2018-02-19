@@ -42,9 +42,7 @@ class SalesAnalystTest < Minitest::Test
   end
 
   def test_can_find_top_seller
-    skip
-    assert_instance_of Merchant, @sa.merchants_with_high_item_count
-    assert_equal 3, @sa.merchants_with_high_item_count
+    assert_equal "MiniatureBikez", @sa.merchants_with_high_item_count
   end
 
   def test_the_average_price_of_a_merchant
