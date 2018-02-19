@@ -22,6 +22,8 @@ class ItemTest < Minitest::Test
     assert_equal "You can use it to write things", @item.description
   end
 
+
+
   def test_class_has_a_price_to_dollars
     assert 10.99, @item.price
 
@@ -29,5 +31,4 @@ class ItemTest < Minitest::Test
 
     assert "$10.99", @item.price
   end
-
 end

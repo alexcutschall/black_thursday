@@ -19,9 +19,10 @@ class ItemRepositoryTest < Minitest::Test
     item_repository = ItemRepository.new('./test/fixtures/items.csv')
 
     result = item_repository.find_item_by_id(263396013)
-    
+
     assert_instance_of Item, result
     assert_equal "Free standing Woden letters", result.name
     assert_equal 263396013, result.id
   end
+
 end
