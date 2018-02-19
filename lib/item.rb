@@ -5,9 +5,10 @@ class Item
               :description,
               :id,
               :unit_price,
-              :merchant_id
+              :merchant_id,
+              :parent
 
-  def initialize(data)
+  def initialize(data, parent = nil)
     @id           = data[:id].to_i
     @name         = data[:name]
     @description  = data[:description]
@@ -15,6 +16,7 @@ class Item
     @merchant_id  = data[:merchant_id].to_i
     @created_at   = data[:created_at]
     @updated_at   = data[:updated_at]
+    @parent = parent
   end
 
   def unit_price_to_dollars
