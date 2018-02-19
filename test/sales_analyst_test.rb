@@ -24,9 +24,19 @@ class SalesAnalystTest < Minitest::Test
     assert_instance_of ItemRepository, @sa.items
   end
 
-  def test_can_find_average_items_per_merchant
-    assert_equal 2.88, @sa.average_items_per_merchant
+  def test_can_output_list_of_merchant_items
+    assert_equal [0,0,3,0,0], @sa.item_count
   end
 
+  def test_can_find_average_items_per_merchant
+    assert_equal 0.6, @sa.average_items_per_merchant
+  end
 
+  def test_average_can_average_numbers
+    assert_equal 1.0, @sa.average([1,1,1,1,1])
+  end
+
+  def test_can_find_standard_deviation
+    assert_equal 1.55, @sa.average_items_per_merchant_standard_deviation
+  end
 end
