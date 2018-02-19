@@ -31,8 +31,25 @@ class MerchantRepositoryTest < Minitest::Test
   def test_returns_nil_when_no_match_found
     merchant_repository = MerchantRepository.new('./test/fixtures/merchants.csv')
 
-    result = merchant_repository.find_by_id(5234123)
+   result = merchant_repository.find_by_id(5234123)
 
     assert_nil result
+  end
+
+  def test_repository_can_find_by_name
+    merchant_repository = MerchantRepository.new('./test/fixtures/merchants.csv')
+
+    result = merchant_repository.find_by_name("LolaMarleys")
+
+    assert_equal 1, result.id
+  end
+
+  def test_repository_can_find_all_by_name
+    merchant_repository = MerchantRepository.new('./test/fixtures/merchants.csv')
+
+    result = merchant_repository.find_all_by_name( "Shopin1901")
+
+    assert_equal 1, result.count
+    assert_includes result.name.downcase, "Shopin1901"
   end
 end
