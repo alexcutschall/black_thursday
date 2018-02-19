@@ -25,6 +25,9 @@ class ItemRepositoryTest < Minitest::Test
     assert_equal 263396013, result.id
   end
 
+  def test_item_find_by_name
+    item_repository = ItemRepository.new('./test/fixtures/items.csv')
+
   def test_item_repository_can_find_all_by_merchant_id
     item_repository = ItemRepository.new('./test/fixtures/items.csv')
 
@@ -42,5 +45,13 @@ binding.pry
 
       result = item_repository.find_all_by_price_in_range(0, 1500)
       assert_instance_of Item, result.first
+  end
+
+  def test_item_find_all_by_price
+    item_repository = ItemRepository.new('./test/fixtures/items.csv')
+
+    result = item_repository.find_all_by_price(700)
+
+    assert_equal 700, result.first.unit_price.to_i
   end
 end

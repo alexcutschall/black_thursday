@@ -24,6 +24,12 @@ class ItemRepository
     end
   end
 
+  def find_by_name(name)
+    @items.find do |item|
+      item.name.downcase == name.downcase
+    end
+  end
+
   def find_all_with_description(search_query)
     @items.find_all do |item|
       item.description.downcase == search_query.downcase
@@ -39,6 +45,12 @@ class ItemRepository
   def find_all_by_price_in_range(range_low, range_high)
     @items.find_all do |item|
       item.unit_price.between?(range_low, range_high)
+    end
+  end
+  
+  def find_all_by_price(price)
+    @items.find_all do |item|
+      item.unit_price.to_i == price.to_i
     end
   end
 end
