@@ -27,7 +27,7 @@ class ItemRepository
   def find_all_with_description(search_query)
     @items.find_all do |item|
       item.description.downcase == search_query.downcase
-    end 
+    end
   end
 
 end
