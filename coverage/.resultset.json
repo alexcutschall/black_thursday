@@ -1,46 +1,60 @@
 {
   "Unit Tests": {
     "coverage": {
-      "/Users/alexcutschall/turing/1module/projects/black_thursday/lib/merchant_repository.rb": [
+      "/Users/sergiomunoz/turing/module_1_1801/projects/black_thursday/black_thursday/lib/merchant_repository.rb": [
         1,
         1,
         null,
         1,
         null,
         1,
-        4,
-        4,
+        6,
+        6,
         null,
         null,
         1,
-        4,
+        3,
         null,
         null,
         1,
-        4,
-        16,
+        6,
+        30,
         null,
         null,
         null,
         1,
         2,
+        6,
+        null,
+        null,
+        null,
+        1,
+        1,
+        4,
+        null,
+        null,
+        null,
+        1,
+        1,
         5,
+        null,
+        null,
         null,
         null,
         null
       ],
-      "/Users/alexcutschall/turing/1module/projects/black_thursday/lib/merchant.rb": [
+      "/Users/sergiomunoz/turing/module_1_1801/projects/black_thursday/black_thursday/lib/merchant.rb": [
         1,
         1,
         null,
         null,
         1,
-        16,
-        16,
+        30,
+        30,
         null,
         null
       ]
     },
-    "timestamp": 1518987007
+    "timestamp": 1519053977
   }
 }
