@@ -28,6 +28,11 @@ class ItemRepositoryTest < Minitest::Test
   def test_item_find_by_name
     item_repository = ItemRepository.new('./test/fixtures/items.csv')
 
+    result = item_repository.find_by_name("Free standing Woden letters")
+
+    assert_instance_of Item, result
+  end
+
   def test_item_repository_can_find_all_by_merchant_id
     item_repository = ItemRepository.new('./test/fixtures/items.csv')
 
@@ -40,7 +45,6 @@ class ItemRepositoryTest < Minitest::Test
       item_repository = ItemRepository.new('./test/fixtures/items.csv')
 
       result = item_repository.find_all_by_price_in_range(0,100)
-binding.pry
       assert_equal [], result
 
       result = item_repository.find_all_by_price_in_range(0, 1500)
