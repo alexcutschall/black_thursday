@@ -24,4 +24,25 @@ class ItemRepositoryTest < Minitest::Test
     assert_equal "Free standing Woden letters", result.name
     assert_equal 263396013, result.id
   end
+
+  def test_item_find_by_name
+    skip
+    item_repository = ItemRepository.new('./test/fixtures/items.csv')
+
+    result = item_repository.find_by_name("cache cache à la plage")
+
+    assert_instance_of Item, result
+    assert_equal "Cache cache à la plage", result.name
+  end
+
+  def test_item_find_all_with_description
+    item_repository = ItemRepository.new('./test/fixtures/items.csv')
+
+    results = item_repository.find_all_with_description("disney")
+
+    assert_instance_of Array, results
+    assert results.all? do |result|
+      result.description.include?("Disney")
+    end
+  end
 end
