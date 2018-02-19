@@ -3,6 +3,7 @@ require_relative '../lib/sales_engine'
 require_relative '../lib/sales_analyst'
 require_relative '../lib/item_repository'
 require_relative '../lib/merchant_repository'
+require 'bigdecimal'
 
 class SalesAnalystTest < Minitest::Test
 
@@ -37,6 +38,17 @@ class SalesAnalystTest < Minitest::Test
   end
 
   def test_can_find_standard_deviation
-    assert_equal 1.55, @sa.average_items_per_merchant_standard_deviation
+    assert_equal 1.34, @sa.average_items_per_merchant_standard_deviation
+  end
+
+  def test_can_find_top_seller
+    skip
+    assert_instance_of Merchant, @sa.merchants_with_high_item_count
+    assert_equal 3, @sa.merchants_with_high_item_count
+  end
+
+  def test_the_average_price_of_a_merchant
+    assert_instance_of BigDecimal, @sa.average_item_price_for_merchant(12334185)
+    assert_equal 0.111667e4, @sa.average_item_price_for_merchant(12334185)
   end
 end
