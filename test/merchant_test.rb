@@ -21,5 +21,4 @@ class MerchantTest < Minitest::Test
     assert_equal 6, merchant.id
     assert_equal "Codecademy", merchant.name
   end
-
 end
