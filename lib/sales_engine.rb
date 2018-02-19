@@ -7,27 +7,11 @@ class SalesEngine
               :merchants
 
   def initialize(data)
-    @items = []
-    @item_path = load_items(data[:items])
-    @merchants = []
-    @merchants_path = load_merchants(data[:merchants])
+    @items = ItemRepository.new(data[:items])
+    @merchants = MerchantRepository.new(data[:merchants])
   end
 
   def self.from_csv(data)
     new(data)
-  end
-
-  def load_items(filepath)
-    CSV.foreach(filepath, headers: true,
-                header_converters: :symbol) do |data|
-    @items << Item.new(data)
-    end
-  end
-
-  def load_merchants(filepath)
-    CSV.foreach(filepath, headers: true,
-                header_converters: :symbol) do |data|
-      @merchants << Merchant.new(data)
-    end
   end
 end

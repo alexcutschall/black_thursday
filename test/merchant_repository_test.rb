@@ -9,6 +9,12 @@ class MerchantRepositoryTest < Minitest::Test
     assert_instance_of MerchantRepository, merchant_repository
   end
 
+  def test_merchants_is_an_empty_array
+    merchant_repository = MerchantRepository.new('./test/fixtures/merchants.csv')
+
+    assert_instance_of Array, merchant_repository.all
+  end
+
   def test_a_merchant_repository_has_merchants
     merchant_repository = MerchantRepository.new('./test/fixtures/merchants.csv')
 

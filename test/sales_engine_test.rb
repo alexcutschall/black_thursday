@@ -13,10 +13,10 @@ class SalesEngineTest < Minitest::Test
 
   def test_class_can_be_instantiated
     assert_instance_of SalesEngine, @se
+    binding.pry
   end
 
   def test_class_can_call_from_csv_function
-
-    binding.pry
+    skip
   end
 end
