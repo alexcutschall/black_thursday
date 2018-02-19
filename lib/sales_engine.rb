@@ -4,12 +4,12 @@ require_relative 'item_repository'
 class SalesEngine
 
   attr_reader :items,
-              :merchants,
+              :merchant,
               :parent
 
   def initialize(data, parent = nil)
     @items = ItemRepository.new(data[:items], self)
-    @merchants = MerchantRepository.new(data[:merchants], self)
+    @merchant = MerchantRepository.new(data[:merchants], self)
     @parent = parent
   end
 
