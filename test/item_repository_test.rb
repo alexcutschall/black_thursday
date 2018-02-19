@@ -24,5 +24,4 @@ class ItemRepositoryTest < Minitest::Test
     assert_equal "Free standing Woden letters", result.name
     assert_equal 263396013, result.id
   end
-
 end
