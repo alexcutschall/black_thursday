@@ -3,6 +3,8 @@ require 'CSV'
 
 class InvoiceRepository
 
+  attr_reader :parent
+
   def initialize(filepath, parent = nil)
     @invoices = []
     load_invoices(filepath)

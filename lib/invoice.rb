@@ -5,7 +5,8 @@ class Invoice
               :merchant_id,
               :status,
               :created_at,
-              :updated_at
+              :updated_at,
+              :parent
 
   def initialize(data, parent = nil)
     @id          = data[:id].to_i
@@ -15,6 +16,7 @@ class Invoice
     @created_at  = data[:created_at]
     @updated_at  = data[:updated_at]
     @parent      = parent
+    @current_location = nil
   end
 
   def merchant
@@ -36,6 +38,6 @@ class Invoice
 
   def move(current_location)
     @current_location = @current_location.parent
-    items
+    merchant
   end
 end
