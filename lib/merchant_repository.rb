@@ -1,14 +1,16 @@
 require 'CSV'
-require_relative '../lib/merchant'
+require_relative 'merchant'
 
 class MerchantRepository
-
   attr_reader :parent
-
   def initialize(filepath, parent = nil)
     @merchants = []
     load_merchants(filepath)
     @parent = parent
+  end
+
+  def inspect
+    "#<#{self.class} #{@merchants.size} rows>"
   end
 
   def all

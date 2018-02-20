@@ -18,7 +18,7 @@ class ItemRepositoryTest < Minitest::Test
   def test_item_repository_can_find_by_id
     item_repository = ItemRepository.new('./test/fixtures/items.csv')
 
-    result = item_repository.find_item_by_id(263396013)
+    result = item_repository.find_by_id(263396013)
 
     assert_instance_of Item, result
     assert_equal "Free standing Woden letters", result.name
@@ -36,10 +36,18 @@ class ItemRepositoryTest < Minitest::Test
   def test_item_repository_can_find_all_by_merchant_id
     item_repository = ItemRepository.new('./test/fixtures/items.csv')
 
-  
+
     result = item_repository.find_all_by_merchant_id(12334185)
     assert_instance_of Array, result
     assert_instance_of Item, result.first
+  end
+
+  def test_item_find_all_by_price
+    item_repository = ItemRepository.new('./test/fixtures/items.csv')
+
+    result = item_repository.find_all_by_price(700)
+
+    assert_equal 700, result.first.unit_price.to_i
   end
 
   def test_can_find_all_by_price_in_range
@@ -52,11 +60,4 @@ class ItemRepositoryTest < Minitest::Test
       assert_instance_of Item, result.first
   end
 
-  def test_item_find_all_by_price
-    item_repository = ItemRepository.new('./test/fixtures/items.csv')
-
-    result = item_repository.find_all_by_price(700)
-
-    assert_equal 700, result.first.unit_price.to_i
-  end
 end
