@@ -1,14 +1,16 @@
 require 'CSV'
-require_relative '../lib/item'
+require_relative 'item'
 
 class ItemRepository
-
   attr_reader :parent
-
   def initialize(filepath, parent = nil)
     @items = []
     load_items(filepath)
     @parent = parent
+  end
+
+  def inspect
+    "#<#{self.class} #{@items.size} rows>"
   end
 
   def all
@@ -22,7 +24,7 @@ class ItemRepository
     end
   end
 
-  def find_item_by_id(id)
+  def find_by_id(id)
     @items.find do |item|
       item.id == id
     end
@@ -47,15 +49,16 @@ class ItemRepository
     merchants
   end
 
-  def find_all_by_price_in_range(range_low, range_high)
+  def find_all_by_price(price)
     @items.find_all do |item|
-      item.unit_price.between?(range_low, range_high)
+      item.unit_price == price
     end
   end
 
-  def find_all_by_price(price)
+  def find_all_by_price_in_range(range)
     @items.find_all do |item|
-      item.unit_price.to_i == price.to_i
+      range.cover?(item.unit_price)
     end
   end
+
 end
