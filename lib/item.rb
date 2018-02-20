@@ -9,7 +9,8 @@ class Item
               :created_at,
               :updated_at,
               :merchant_id,
-              :parent
+              :parent,
+              :merchants
 
   def initialize(data, parent = nil)
     @id           = data[:id].to_i
@@ -21,6 +22,7 @@ class Item
     @updated_at   = Time.parse(data[:updated_at].to_s)
     @parent = parent
     @current_location = nil
+    @merchants = nil
   end
 
   def unit_price_to_dollars
@@ -43,7 +45,7 @@ class Item
   def merchant
     find_current_location
     if @current_location.parent == nil
-      @current_location.merchant.find_by_id(@merchant_id)
+      @merchants = @current_location.merchants.find_by_id(@merchant_id)
     else
       move
     end

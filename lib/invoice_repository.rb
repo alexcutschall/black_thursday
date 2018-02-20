@@ -11,6 +11,10 @@ class InvoiceRepository
     @parent   = parent
   end
 
+  def inspect
+    "#<#{self.class} #{@invoices.size} rows>"
+  end
+
   def load_invoices(filepath)
     CSV.foreach(filepath, headers: true,
                 header_converters: :symbol) do |data|
