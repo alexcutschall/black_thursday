@@ -13,7 +13,6 @@ class SalesEngineTest < Minitest::Test
 
   def test_class_can_be_instantiated
     assert_instance_of SalesEngine, @se
-    binding.pry
   end
 
   def test_sales_engine_has_instances_of_repositories
