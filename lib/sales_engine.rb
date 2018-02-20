@@ -5,18 +5,18 @@ require_relative 'invoice_repository'
 class SalesEngine
 
   attr_reader :items,
-              :merchant,
+              :merchants,
               :invoices,
               :parent
 
   def initialize(data, parent = nil)
-    @items    = ItemRepository.new(data[:items], self)
-    @merchant = MerchantRepository.new(data[:merchants], self)
+    @items = ItemRepository.new(data[:items], self)
+    @merchants = MerchantRepository.new(data[:merchants], self)
     @invoices = InvoiceRepository.new(data[:invoices], self)
-    @parent   = parent
+    @parent = parent
   end
 
   def self.from_csv(data)
-    new(data)
+  new(data)
   end
 end
