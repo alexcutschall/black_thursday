@@ -16,7 +16,16 @@ class Merchant
     if @current_location.parent == nil
       @current_location.items.find_all_by_merchant_id(@id)
     else
-      move(@current_location)
+      move_items(@current_location)
+    end
+  end
+
+  def invoices
+    find_current_location
+    if @current_location.parent == nil
+       @current_location.invoices.find_by_id(@id)
+    else
+      move_invoices(@current_location)
     end
   end
 
@@ -28,8 +37,13 @@ class Merchant
     end
   end
 
-  def move(current_location)
+  def move_items(current_location)
     @current_location = @current_location.parent
     items
+  end
+
+  def move_invoices(current_location)
+    @current_location = @current_location.parent
+    invoices
   end
 end

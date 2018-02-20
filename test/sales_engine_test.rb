@@ -2,12 +2,15 @@ require_relative 'test_helper'
 require_relative '../lib/sales_engine'
 require_relative '../lib/item'
 require_relative '../lib/merchant'
+require_relative '../lib/invoice'
 
 class SalesEngineTest < Minitest::Test
+
   def setup
     @se = SalesEngine.from_csv({
       :items       => './test/fixtures/items.csv',
       :merchants   => './test/fixtures/merchants.csv',
+      :invoices    => './test/fixtures/invoices.csv'
       })
   end
 
@@ -16,8 +19,9 @@ class SalesEngineTest < Minitest::Test
   end
 
   def test_sales_engine_has_instances_of_repositories
-    assert_instance_of ItemRepository, @se.items
+    assert_instance_of ItemRepository,     @se.items
     assert_instance_of MerchantRepository, @se.merchant
+    assert_instance_of InvoiceRepository,  @se.invoices
   end
 
   def test_merchant_attribute_can_find_by_name
@@ -43,5 +47,15 @@ class SalesEngineTest < Minitest::Test
     skip
     items = @se.items.find_by_id(1)
     assert_equal merchant, items.merchant
+  end
+
+  def test_class_has_an_invoices_method
+    merchant = @se.merchant.find_by_id(1)
+    assert_instance_of Invoice,merchant.invoices
+  end
+
+  def test_can_find_merchants_from_an_invoice
+    invoice = @se.invoices.find_by_id(1)
+    assert_instance_of Merchant, invoice.merchant
   end
 end
