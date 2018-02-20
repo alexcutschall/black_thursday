@@ -48,4 +48,10 @@ class SalesEngineTest < Minitest::Test
     items = @se.items.find_by_id(1)
     assert_equal merchant, items.merchant
   end
+
+  def test_class_has_an_invoices_method
+    result = @se.merchant.find_by_id(1)
+    assert_instance_of Array, result.invoices
+    assert_instance_of Invoice, result.invoices
+  end
 end

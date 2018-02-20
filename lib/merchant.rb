@@ -20,6 +20,15 @@ class Merchant
     end
   end
 
+  def invoices
+    find_current_location
+    if @current_location.parent == nil
+       @current_location.invoices.find_by_id(@id)
+    else
+      move(@current_location)
+    end
+  end
+
   def find_current_location
     if @current_location == nil
       @current_location = self

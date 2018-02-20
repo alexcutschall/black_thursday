@@ -22,7 +22,7 @@ class InvoiceRepositoryTest < Minitest::Test
     result_nil = invoice_repository.find_by_id(78)
 
     assert_instance_of Invoice, result
-    assert_equal 12335938,      result.merchant_id
+    assert_equal 1,             result.merchant_id
     assert_nil                  result_nil
   end
 
@@ -39,7 +39,7 @@ class InvoiceRepositoryTest < Minitest::Test
   def test_it_can_find_all_by_merchant_id
     invoice_repository = InvoiceRepository.new('./test/fixtures/invoices.csv')
 
-    result = invoice_repository.find_all_by_merchant_id(12335938)
+    result = invoice_repository.find_all_by_merchant_id(1)
 
     assert_equal [],            invoice_repository.find_all_by_merchant_id(123415155)
     assert_instance_of Invoice, result.first

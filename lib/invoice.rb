@@ -17,4 +17,25 @@ class Invoice
     @parent      = parent
   end
 
+  def merchant
+    find_current_location
+    if @current_location.parent == nil
+       @current_location.merchant.find_by_id(@merchant_id)
+    else
+      move(@current_location)
+    end
+  end
+
+  def find_current_location
+    if @current_location == nil
+      @current_location = self
+    else
+      @current_location
+    end
+  end
+
+  def move(current_location)
+    @current_location = @current_location.parent
+    items
+  end
 end

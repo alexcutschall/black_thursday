@@ -36,6 +36,5 @@ class MerchantTest < Minitest::Test
 
     merchant.find_current_location
     assert_instance_of Merchant, merchant.current_location
-
   end
 end
