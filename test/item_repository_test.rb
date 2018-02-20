@@ -1,6 +1,7 @@
 require_relative 'test_helper'
 require_relative '../lib/item_repository'
 require_relative '../lib/item'
+require 'bigdecimal'
 
 class ItemRepositoryTest < Minitest::Test
 
@@ -47,16 +48,16 @@ class ItemRepositoryTest < Minitest::Test
 
     result = item_repository.find_all_by_price(700)
 
-    assert_equal 700, result.first.unit_price.to_i
+    assert_equal 1, result.count
   end
 
   def test_can_find_all_by_price_in_range
       item_repository = ItemRepository.new('./test/fixtures/items.csv')
 
-      result = item_repository.find_all_by_price_in_range(0,100)
+      result = item_repository.find_all_by_price_in_range(0..100)
       assert_equal [], result
 
-      result = item_repository.find_all_by_price_in_range(0, 1500)
+      result = item_repository.find_all_by_price_in_range(0..1500)
       assert_instance_of Item, result.first
   end
 

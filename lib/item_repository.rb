@@ -51,13 +51,13 @@ class ItemRepository
 
   def find_all_by_price(price)
     @items.find_all do |item|
-      item.unit_price.to_i == price.to_i
+      item.unit_price == price
     end
   end
 
-  def find_all_by_price_in_range(range_low, range_high)
+  def find_all_by_price_in_range(range)
     @items.find_all do |item|
-      item.unit_price.between?(range_low, range_high)
+      range.cover?(item.unit_price)
     end
   end
 
