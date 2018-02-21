@@ -3,6 +3,8 @@ require_relative '../lib/sales_engine'
 require_relative '../lib/sales_analyst'
 require_relative '../lib/item_repository'
 require_relative '../lib/merchant_repository'
+require_relative '../lib/customer_repository'
+
 require 'bigdecimal'
 
 class SalesAnalystTest < Minitest::Test
@@ -13,16 +15,18 @@ class SalesAnalystTest < Minitest::Test
       :merchants    => './test/fixtures/merchants.csv',
       :invoices     => './test/fixtures/invoices.csv',
       :transactions => './test/fixtures/transactions.csv',
+      :customers    => './test/fixtures/customers.csv',
       })
 
     @sa = SalesAnalyst.new(@se)
 
 
     @se_test = SalesEngine.from_csv({
-      :items     => './test/fixtures/items_test.csv',
-      :merchants => './test/fixtures/merchants_test.csv',
-      :invoices  => './test/fixtures/invoices.csv',
+      :items        => './test/fixtures/items_test.csv',
+      :merchants    => './test/fixtures/merchants_test.csv',
+      :invoices     => './test/fixtures/invoices.csv',
       :transactions => './test/fixtures/transactions.csv',
+      :customers    => './test/fixtures/customers.csv',
       })
 
     @sa_test = SalesAnalyst.new(@se_test)

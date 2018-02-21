@@ -1,6 +1,7 @@
 require_relative 'merchant_repository'
 require_relative 'item_repository'
 require_relative 'invoice_repository'
+require_relative 'customer_repository'
 
 class SalesEngine
 
@@ -15,6 +16,7 @@ class SalesEngine
     @merchants    = MerchantRepository.new(data[:merchants], self)
     @invoices     = InvoiceRepository.new(data[:invoices], self)
     @transactions = TransactionRepository.new(data[:transactions], self)
+    @customers    = CustomerRepository.new(data[:customers], self)
     @parent       = parent
   end
 

@@ -11,7 +11,8 @@ class SalesEngineTest < Minitest::Test
       :items        => './test/fixtures/items.csv',
       :merchants    => './test/fixtures/merchants.csv',
       :invoices     => './test/fixtures/invoices.csv',
-      :transactions => './test/fixtures/transactions.csv'
+      :transactions => './test/fixtures/transactions.csv',
+      :customers    => './test/fixtures/customers.csv',
       })
   end
 
@@ -55,6 +56,4 @@ class SalesEngineTest < Minitest::Test
     invoice = @se.invoices.find_by_id(1)
     assert_instance_of Merchant, invoice.merchant
   end
-
-
 end
