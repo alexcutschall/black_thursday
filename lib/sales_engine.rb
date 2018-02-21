@@ -9,6 +9,7 @@ class SalesEngine
               :merchants,
               :invoices,
               :transactions,
+              :customers,
               :parent
 
   def initialize(data, parent = nil)

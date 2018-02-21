@@ -23,7 +23,7 @@ class Merchant
   def invoices
     find_current_location
     if @current_location.parent == nil
-       @current_location.invoices.find_by_id(@id)
+       @current_location.invoices.find_all_by_merchant_id(@id)
     else
       move_invoices(@current_location)
     end

@@ -49,11 +49,7 @@ class SalesEngineTest < Minitest::Test
 
   def test_class_has_an_invoices_method
     merchant = @se.merchants.find_by_id(1)
-    assert_instance_of Invoice,merchant.invoices
-  end
-
-  def test_can_find_merchants_from_an_invoice
-    invoice = @se.invoices.find_by_id(1)
-    assert_instance_of Merchant, invoice.merchant
+    assert_instance_of Invoice, merchant.invoices.first
+    assert_equal 1, merchant.invoices.first.merchant_id
   end
 end

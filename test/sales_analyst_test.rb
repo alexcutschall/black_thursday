@@ -82,4 +82,13 @@ class SalesAnalystTest < Minitest::Test
     assert_instance_of BigDecimal, @sa.average_item_price_for_merchant(12334185)
     assert_equal 0.1117e2, @sa.average_item_price_for_merchant(12334185)
   end
+
+  def test_can_find_number_of_invoices_for_each_merchant
+    assert_equal [1, 0, 0, 0, 0], @sa.invoice_count
+
+    assert_equal 0.2, @sa.average_invoices_per_merchant
+  end
+
+  def test_can_find_standard_deviation_for_invoices_per_merchant
+  end 
 end
