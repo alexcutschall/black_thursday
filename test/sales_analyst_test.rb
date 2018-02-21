@@ -64,11 +64,12 @@ class SalesAnalystTest < Minitest::Test
   end
 
   def test_can_find_top_seller
-    assert_equal "MiniatureBikez", @sa.merchants_with_high_item_count
+    assert_equal "MiniatureBikez", @sa.merchants_with_high_item_count.first.name
   end
 
   def test_can_find_different_top_seller
-    assert_equal ["Shopin1901", "LolaMarleys", "HighShop"].join("\n"), @sa_test.merchants_with_high_item_count
+    assert_equal 12334186, @sa_test.merchants_with_high_item_count.first.id
+    assert_equal 12334186, @sa_test.merchants_with_high_item_count.last.id
   end
 
   def test_the_average_price_of_a_merchant

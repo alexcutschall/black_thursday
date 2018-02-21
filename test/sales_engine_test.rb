@@ -20,7 +20,7 @@ class SalesEngineTest < Minitest::Test
 
   def test_sales_engine_has_instances_of_repositories
     assert_instance_of ItemRepository,     @se.items
-    assert_instance_of MerchantRepository, @se.merchant
+    assert_instance_of MerchantRepository, @se.merchants
     assert_instance_of InvoiceRepository,  @se.invoices
   end
 
@@ -50,7 +50,7 @@ class SalesEngineTest < Minitest::Test
   end
 
   def test_class_has_an_invoices_method
-    merchant = @se.merchant.find_by_id(1)
+    merchant = @se.merchants.find_by_id(1)
     assert_instance_of Invoice,merchant.invoices
   end
 

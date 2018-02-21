@@ -10,10 +10,10 @@ class SalesEngine
               :parent
 
   def initialize(data, parent = nil)
-    @items = ItemRepository.new(data[:items], self)
+    @items     = ItemRepository.new(data[:items], self)
     @merchants = MerchantRepository.new(data[:merchants], self)
-    @invoices = InvoiceRepository.new(data[:invoices], self)
-    @parent = parent
+    @invoices  = InvoiceRepository.new(data[:invoices], self)
+    @parent    = parent
   end
 
   def self.from_csv(data)

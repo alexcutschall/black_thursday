@@ -24,7 +24,7 @@ class ItemTest < Minitest::Test
   end
 
   def test_class_has_a_price_to_dollars
-    assert 0.1099e2, @item.unit_price
+    assert_equal 0.1099e2, @item.unit_price
 
     result = @item.unit_price_to_dollars
 
@@ -38,6 +38,7 @@ class ItemTest < Minitest::Test
                      :created_at    => Time.now,
                      :updated_at    => Time.now,
                      })
+
     assert_equal 0.10031e3, item.unit_price
 
     result = item.unit_price_to_dollars
