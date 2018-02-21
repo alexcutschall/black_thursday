@@ -34,7 +34,7 @@ class Item
        @current_location = self
      else
        @current_location
-     end
+    end
   end
 
   def move

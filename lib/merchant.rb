@@ -4,7 +4,7 @@ class Merchant
               :parent,
               :current_location
 
-   def initialize(data, parent = nil)
+  def initialize(data, parent = nil)
     @id   = data[:id].to_i
     @name = data[:name]
     @parent = parent

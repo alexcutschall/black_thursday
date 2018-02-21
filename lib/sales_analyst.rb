@@ -7,17 +7,16 @@ class SalesAnalyst
     @sales_engine = sales_engine
     @merchants    = sales_engine.merchants
     @items        = sales_engine.items
-    @item_count   = nil
   end
 
   def item_count
-    item_count = @merchants.all.map do |merchant|
+    @merchants.all.map do |merchant|
       merchant.items.count
     end
   end
 
   def price_count
-    price_count = @items.all.map do |item|
+    @items.all.map do |item|
       item.unit_price
     end
   end
@@ -55,7 +54,7 @@ class SalesAnalyst
     @merchants.all.each do |merchant|
       if merchant.items.count > (@deviation + @item_count)
          top_sellers << merchant
-       end
+      end
      end
      top_sellers
   end

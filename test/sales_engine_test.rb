@@ -25,28 +25,24 @@ class SalesEngineTest < Minitest::Test
   end
 
   def test_merchant_attribute_can_find_by_name
-    skip
     mr = @se.merchants
-    assert_equal "name", mr.find_by_name("name")
+    assert_equal 1, mr.find_by_name("Shopin1901").id
   end
 
   def test_item_attribute_can_find_by_name
-    skip
     ir = @se.items
-    assert_equal "name", ir.find_by_name("name")
+    assert_equal 263395617, ir.find_by_name("Glitter scrabble frames").id
   end
 
   def test_merchant_attribute_can_look_for_items
-    skip
     merchant = @se.merchants.find_by_id(1)
 
     assert_equal [], merchant.items
   end
 
   def test_item_attribute_can_look_for_merchants
-    skip
-    items = @se.items.find_by_id(1)
-    assert_equal merchant, items.merchant
+    items = @se.items.find_by_id(263395617)
+    assert_equal 12334185, items.merchant.id
   end
 
   def test_class_has_an_invoices_method

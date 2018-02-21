@@ -40,5 +40,5 @@ class MerchantRepository
     @merchants.find_all do |merchant|
          merchant.name.downcase.include? name.downcase
       end
-    end
+  end
 end
