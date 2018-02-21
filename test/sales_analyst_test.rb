@@ -9,9 +9,10 @@ class SalesAnalystTest < Minitest::Test
 
   def setup
     @se = SalesEngine.from_csv({
-      :items     => './test/fixtures/items.csv',
-      :merchants => './test/fixtures/merchants.csv',
-      :invoices  => './test/fixtures/invoices.csv'
+      :items        => './test/fixtures/items.csv',
+      :merchants    => './test/fixtures/merchants.csv',
+      :invoices     => './test/fixtures/invoices.csv',
+      :transactions => './test/fixtures/transactions.csv',
       })
 
     @sa = SalesAnalyst.new(@se)
@@ -20,7 +21,8 @@ class SalesAnalystTest < Minitest::Test
     @se_test = SalesEngine.from_csv({
       :items     => './test/fixtures/items_test.csv',
       :merchants => './test/fixtures/merchants_test.csv',
-      :invoices  => './test/fixtures/invoices.csv'
+      :invoices  => './test/fixtures/invoices.csv',
+      :transactions => './test/fixtures/transactions.csv',
       })
 
     @sa_test = SalesAnalyst.new(@se_test)

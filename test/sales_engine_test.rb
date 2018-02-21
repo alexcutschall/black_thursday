@@ -8,9 +8,10 @@ class SalesEngineTest < Minitest::Test
 
   def setup
     @se = SalesEngine.from_csv({
-      :items       => './test/fixtures/items.csv',
-      :merchants   => './test/fixtures/merchants.csv',
-      :invoices    => './test/fixtures/invoices.csv'
+      :items        => './test/fixtures/items.csv',
+      :merchants    => './test/fixtures/merchants.csv',
+      :invoices     => './test/fixtures/invoices.csv',
+      :transactions => './test/fixtures/transactions.csv'
       })
   end
 
@@ -54,4 +55,6 @@ class SalesEngineTest < Minitest::Test
     invoice = @se.invoices.find_by_id(1)
     assert_instance_of Merchant, invoice.merchant
   end
+
+
 end
