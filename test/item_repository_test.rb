@@ -46,7 +46,7 @@ class ItemRepositoryTest < Minitest::Test
   def test_item_find_all_by_price
     item_repository = ItemRepository.new('./test/fixtures/items.csv')
 
-    result = item_repository.find_all_by_price(700)
+    result = item_repository.find_all_by_price(7.00)
 
     assert_equal 1, result.count
   end
@@ -54,7 +54,7 @@ class ItemRepositoryTest < Minitest::Test
   def test_can_find_all_by_price_in_range
       item_repository = ItemRepository.new('./test/fixtures/items.csv')
 
-      result = item_repository.find_all_by_price_in_range(0..100)
+      result = item_repository.find_all_by_price_in_range(0..5)
       assert_equal [], result
 
       result = item_repository.find_all_by_price_in_range(0..1500)
