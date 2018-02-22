@@ -102,7 +102,20 @@ class SalesAnalystTest < Minitest::Test
     assert_nil @sa.bottom_merchants_by_invoice_count.first
   end
 
-  def test_can_find_standard_deviation_for_days_of_week
-    assert_equal 1.5,@sa.top_days_by_invoice_count
+  def test_can_find_how_many_invoices_there_are_per_day
+    assert_instance_of Hash, @sa.finding_number_of_invoices_per_day
+  end
+
+  def test_can_find_number_of_invoices_for_days_of_week
+    assert_equal 5, @sa.invoice_dates.length
+    assert_equal 2, @sa.finding_number_of_invoices_per_day["Saturday"]
+  end
+
+  def test_can_find_standard_deviation_for_invoices_on_days
+    assert_equal 0.9, @sa.invoice_deviation
+  end
+
+  def test_can_find_top_days_by_invoice_count
+    assert_equal ["Saturday", "Friday", "Wednesday", "Monday"], @sa.top_days_by_invoice_count
   end
 end
