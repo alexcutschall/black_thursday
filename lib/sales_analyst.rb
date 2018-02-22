@@ -32,7 +32,7 @@ class SalesAnalyst
   end
 
   def average_items_per_merchant
-    @item_count = average(item_count)
+    average(item_count)
   end
 
   def average_invoices_per_merchant
@@ -70,7 +70,7 @@ class SalesAnalyst
     average_items_per_merchant
     average_items_per_merchant_standard_deviation
     @merchants.all.each do |merchant|
-      if merchant.items.count > (average_items_per_merchant_standard_deviation + @item_count)
+      if merchant.items.count >= (average_items_per_merchant_standard_deviation + average_items_per_merchant)
          top_sellers << merchant
       end
      end
@@ -97,7 +97,7 @@ class SalesAnalyst
     expensive = []
     average_price_per_merchant_standard_deviation
     @items.all.each do |item|
-      if item.unit_price > ((average_price_per_merchant_standard_deviation * 2) + @average_price)
+      if item.unit_price >= ((average_price_per_merchant_standard_deviation * 2) + @average_price)
         expensive << item
       end
     end
@@ -117,17 +117,7 @@ class SalesAnalyst
     average_invoices_per_merchant
     average_invoices_per_merchant_standard_deviation
     @merchants.all.each do |merchant|
-      if merchant.invoices.count > ((average_invoice_per_merchant_standard_deviation * 2) + @invoice_average)
-         top_merchants << merchant
-      end
-    end
-    top_merchants
-  end
-
-  def top_merchants_by_invoice_count
-    top_merchants = []
-    @merchants.all.each do |merchant|
-      if merchant.invoices.count > ((average_invoices_per_merchant_standard_deviation * 2) + average_invoices_per_merchant)
+      if merchant.invoices.count >= ((average_invoices_per_merchant_standard_deviation * 2) + @invoice_average)
          top_merchants << merchant
       end
     end
@@ -136,8 +126,10 @@ class SalesAnalyst
 
   def bottom_merchants_by_invoice_count
     bottom_merchants = []
+    average_invoices_per_merchant
+    average_invoices_per_merchant_standard_deviation
     @merchants.all.each do |merchant|
-      if merchant.invoices.count < ((average_invoices_per_merchant_standard_deviation * 2) - average_invoices_per_merchant)
+      if merchant.invoices.count <= (@invoice_average - (average_invoices_per_merchant_standard_deviation * 2))
          bottom_merchants << merchant
       end
     end
