@@ -56,4 +56,9 @@ class InvoiceRepositoryTest < Minitest::Test
     assert_equal 1,             result.first.id
   end
 
+  def test_it_can_sort_by_date
+    invoice_repository = InvoiceRepository.new('./test/fixtures/invoices.csv')
+    assert_instance_of Array, invoice_repository.find_day_of_date
+    assert_equal "Saturday", invoice_repository.find_day_of_date.first
+  end
 end

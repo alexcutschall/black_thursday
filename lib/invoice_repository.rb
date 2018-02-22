@@ -49,4 +49,10 @@ class InvoiceRepository
          invoice.status == status
     end
   end
+
+  def find_day_of_date
+    @invoices.map do |invoice|
+      invoice.created_at.strftime('%A')
+    end
+  end
 end
