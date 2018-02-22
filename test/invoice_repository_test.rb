@@ -49,7 +49,7 @@ class InvoiceRepositoryTest < Minitest::Test
   def test_it_can_find_all_by_status
     invoice_repository = InvoiceRepository.new('./test/fixtures/invoices.csv')
 
-    result = invoice_repository.find_all_by_status("pending")
+    result = invoice_repository.find_all_by_status(:pending)
 
     assert_equal [],            invoice_repository.find_all_by_status("just didn't care")
     assert_instance_of Invoice, result.first
