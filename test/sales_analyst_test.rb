@@ -90,17 +90,19 @@ class SalesAnalystTest < Minitest::Test
   end
 
   def test_can_find_standard_deviation_for_invoices_per_merchant
-
     assert_equal 1.34, @sa.average_invoices_per_merchant_standard_deviation
   end
 
+#add fixtures to test these rather than the sa
   def test_can_find_top_merchants_by_invoice_count
     assert_equal [], @sa_test.top_merchants_by_invoice_count
   end
 
   def test_can_find_bottom_merchants_by_invoice_count
-    skip
     assert_nil @sa.bottom_merchants_by_invoice_count.first
-    assert_equal "Candisart", @sa.bottom_merchants_by_invoice_count.first.name
+  end
+
+  def test_can_find_standard_deviation_for_days_of_week
+    assert_equal 1.5,@sa.top_days_by_invoice_count
   end
 end

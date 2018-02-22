@@ -133,4 +133,6 @@ class SalesAnalyst
     end
     bottom_merchants
   end
+
+
 end
