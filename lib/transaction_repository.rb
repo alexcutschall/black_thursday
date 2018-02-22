@@ -1,9 +1,14 @@
+require_relative '../lib/transaction'
 class TransactionRepository
 
   def initialize(filepath, parent = nil)
     @transactions = []
     load_transactions(filepath)
     @parent = parent
+  end
+
+  def inspect
+    "#<#{self.class} #{@transactions.size} rows>"
   end
 
   def load_transactions(filepath)

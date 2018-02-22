@@ -24,7 +24,7 @@ class SalesAnalystTest < Minitest::Test
     @se_test = SalesEngine.from_csv({
       :items        => './test/fixtures/items_test.csv',
       :merchants    => './test/fixtures/merchants_test.csv',
-      :invoices     => './test/fixtures/invoices.csv',
+      :invoices     => './test/fixtures/invoices_test.csv',
       :transactions => './test/fixtures/transactions.csv',
       :customers    => './test/fixtures/customers.csv',
       })
@@ -84,11 +84,21 @@ class SalesAnalystTest < Minitest::Test
   end
 
   def test_can_find_number_of_invoices_for_each_merchant
-    assert_equal [1, 0, 0, 0, 0], @sa.invoice_count
+    assert_equal [3, 0, 0, 0, 0], @sa.invoice_count
 
-    assert_equal 0.2, @sa.average_invoices_per_merchant
+    assert_equal 0.6, @sa.average_invoices_per_merchant
   end
 
   def test_can_find_standard_deviation_for_invoices_per_merchant
-  end 
+    assert_equal 1.34, @sa.average_invoices_per_merchant_standard_deviation
+  end
+
+  def test_can_find_top_merchants_by_invoice_count
+    assert_equal [], @sa_test.top_merchants_by_invoice_count
+  end
+
+  def test_can_find_bottom_merchants_by_invoice_count
+    assert_instance_of Merchant, @sa.bottom_merchants_by_invoice_count.first
+    assert_equal "Candisart", @sa.bottom_merchants_by_invoice_count.first.name
+  end
 end

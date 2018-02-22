@@ -1,7 +1,9 @@
 class SalesAnalyst
   attr_reader :merchants,
               :items,
-              :item_count
+              :item_count,
+              :invoices,
+              :customers
 
   def initialize(sales_engine)
     @sales_engine = sales_engine
@@ -34,7 +36,7 @@ class SalesAnalyst
   end
 
   def average_invoices_per_merchant
-    @invoice_count = average(invoice_count)
+    @invoice_average = average(invoice_count)
   end
 
   def average(items)
@@ -100,5 +102,49 @@ class SalesAnalyst
       end
     end
     expensive
+  end
+
+  def average_invoices_per_merchant_standard_deviation
+    average = average_invoices_per_merchant
+    times = invoice_count.map do |invoice|
+      (invoice - average) ** 2
+    end
+    deviation(times)
+  end
+
+  def top_merchants_by_invoice_count
+    top_merchants = []
+    average_invoices_per_merchant
+    average_invoices_per_merchant_standard_deviation
+    @merchants.all.each do |merchant|
+      if merchant.invoices.count > ((average_invoice_per_merchant_standard_deviation * 2) + @invoice_average)
+         top_merchants << merchant
+      end
+    end
+    top_merchants
+  end
+
+  def top_merchants_by_invoice_count
+    top_merchants = []
+    average_invoices_per_merchant
+    average_invoices_per_merchant_standard_deviation
+    @merchants.all.each do |merchant|
+      if merchant.invoices.count > ((average_invoice_per_merchant_standard_deviation * 2) + @invoice_average)
+         top_merchants << merchant
+      end
+    end
+    top_merchants
+  end
+
+  def bottom_merchants_by_invoice_count
+    bottom_merchants = []
+    average_invoices_per_merchant
+    average_invoices_per_merchant_standard_deviation
+    @merchants.all.each do |merchant|
+      if merchant.invoices.count < ((average_invoice_per_merchant_standard_deviation * 2) - @invoice_average)
+         bottom_merchants << merchant
+      end
+    end
+    bottom_merchants
   end
 end

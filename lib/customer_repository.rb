@@ -9,6 +9,10 @@ class CustomerRepository
     @parent    = parent
   end
 
+  def inspect
+    "#<#{self.class} #{@customers.size} rows>"
+  end
+
   def load_customers(filepath)
     CSV.foreach(filepath, headers: true,
                 header_converters: :symbol) do |data|
