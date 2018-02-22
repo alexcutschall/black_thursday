@@ -4,7 +4,7 @@ class Merchant
               :parent,
               :current_location
 
-   def initialize(data, parent = nil)
+  def initialize(data, parent = nil)
     @id   = data[:id].to_i
     @name = data[:name]
     @parent = parent
@@ -23,7 +23,7 @@ class Merchant
   def invoices
     find_current_location
     if @current_location.parent == nil
-       @current_location.invoices.find_by_id(@id)
+       @current_location.invoices.find_all_by_merchant_id(@id)
     else
       move_invoices(@current_location)
     end
