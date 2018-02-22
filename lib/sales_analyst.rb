@@ -162,4 +162,12 @@ class SalesAnalyst
         return day if number > (average_invoices_per_merchant_standard_deviation + invoice_deviation)
       end.keys
   end
+
+  def status(status)
+    total = 0
+    @invoices.all.each do |invoice|
+      total += 1 if invoice.status == status
+    end
+    (total.to_f / @invoices.all.count.to_f) * 100
+  end
 end

@@ -118,4 +118,10 @@ class SalesAnalystTest < Minitest::Test
   def test_can_find_top_days_by_invoice_count
     assert_equal ["Saturday", "Friday", "Wednesday", "Monday"], @sa.top_days_by_invoice_count
   end
+
+  def test_can_find_percentage_of_certain_status
+    assert_equal 60.00, @sa.status(:pending)
+    assert_equal 40.00, @sa.status(:shipped)
+  end
+
 end
